@@ -11,9 +11,9 @@ dap.configurations.php = {
     request = "launch",
     name = "Laravel",
     port = 9003,
-    pathMappings = {
-      ["/var/www/html"] = "${workspaceFolder}",
-    },
+    serverSourceRoot = '/home/vagrant/code/php/pastores',
+    localSourceRoot = '/home/jona/code/php/pastores',
+    trace = { server = '/home/jona/code/php/pastores/storage/logs/xdebug.log' },
   },
   {
     type = "php",

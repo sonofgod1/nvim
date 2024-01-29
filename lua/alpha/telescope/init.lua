@@ -11,8 +11,56 @@ end
 local fb_actions = require("telescope").extensions.file_browser.actions
 local actions = require "telescope.actions"
 local my_actions = require "alpha.telescope.my_actions"
+local pickers = require "telescope.pickers"
+local conf = require "telescope.config".values
+local finders = require "telescope.finders"
+
 
 local M = {}
+
+function M.blade_formatter()
+--Ajusta la ruta al ejecutable blade-formatter si es necesario
+local formatter_cmd ="blade-formatter"
+local current_file = vim.fn.expand('%:p')
+local output_file = vim.fn.tempname()
+print(current_file)
+
+--Asegurarse de que el archivo este guardado antes de formatear
+ vim.cmd('silent! write')
+
+-- Ejecutar blade-formatter con la opción --write
+  vim.fn.jobstart(formatter_cmd .. ' --write ' .. current_file .. ' > ' .. output_file .. ' 2>&1',{
+    on_exit = function(_, code )
+      if code == 0 then
+        print("blade-formatter ejecutado exitosamente")
+        vim.cmd('edit')
+      else
+        print("Hubo un eror al ejecutar blade-formatter " .. output_file)
+      end
+   end,
+  })
+end
+
+function M.blade_formatter_picker()
+  pickers.new({},{
+    prompt_title = 'Ejecutar blade-formatter',
+    finder = finders.new_table({
+      results = { 'Ejecutar blade-formatter'},
+    }),
+    sorter = conf.generic_sorter({}),
+    attach_mappings = function(prompt_bufnr,map)
+      local execute = function()
+        actions.close(prompt_bufnr)
+        M.blade_formatter()
+      end
+
+      map('i', '<CR>', execute)
+      map('n', '<CR>', execute)
+
+      return true
+    end,
+  }):find()
+end
 
 function M.project_files()
   local opts = { show_untracked = true } -- define here if you want to define something

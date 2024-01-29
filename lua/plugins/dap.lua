@@ -1,6 +1,9 @@
 return {
   "mfussenegger/nvim-dap",
+  lazy = true,
   dependencies = {
+    "williamboman/mason.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
     "theHamsta/nvim-dap-virtual-text",
     "rcarriga/nvim-dap-ui",
     "leoluz/nvim-dap-go",

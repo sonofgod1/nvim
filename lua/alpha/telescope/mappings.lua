@@ -52,4 +52,5 @@ map_tele("<leader>ve", "diagnostics", { desc = "Diagnostic of the buffer" })
 map_tele("<leader>po", "api_specs", { desc = "Openapi directory" })
 map_tele("<leader>pm", "gateway", { desc = "Graphql mutations and queries" })
 
+map_tele("<leader>yu", "blade_formatter_picker", { desc = "Probando la funcion blade formatter" })
 return map_tele
