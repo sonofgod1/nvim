@@ -37,7 +37,7 @@ local filetype_hook = function(filepath, bufnr, opts)
   local global_opts = vim.tbl_deep_extend("force", config.DEFAULT_OPTS, user_opts)
 
   local ascii_width, ascii_height, horizontal_padding, vertical_padding, img_width, img_height =
-    dimensions.calculate_ascii_width_height(opts.winid, filepath, global_opts)
+      dimensions.calculate_ascii_width_height(opts.winid, filepath, global_opts)
   options.set_options_before_render(bufnr)
   ui.buf_clear(bufnr)
   local label = ui.create_label(

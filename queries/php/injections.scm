@@ -1,14 +1,5 @@
-;; extends
-(function_call_expression
-    (
-        (name) @_function (#eq? @_function "json_decode")
-        (arguments (argument (string (string_value) @json )))
-    )
-)
+; inherits: php_only
 
-(function_call_expression
-    (
-        (name) @_function (#eq? @_function "render")
-        (arguments (argument (nowdoc (nowdoc_body) @html )))
-    )
-)
+((text) @injection.content
+  (#set! injection.language "html")
+  (#set! injection.combined))

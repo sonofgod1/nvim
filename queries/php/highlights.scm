@@ -1,7 +1,1 @@
-;; extends
-
-[
-    "readonly"
-] @keyword.function
-
-(declare_directive) @constant
+; inherits: php_only

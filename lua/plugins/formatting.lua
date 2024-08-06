@@ -15,7 +15,7 @@ return{
       format_on_save = {
         lsp_fallback = true,
         async = false,
-        timeout_ms = 500,
+        timeout_ms = 2500,
       },
     })
 
@@ -23,7 +23,7 @@ return{
       conform.format({
         lsp_fallback = true,
         async = false,
-        timeout_ms = 500,
+        timeout_ms = 2500,
       })
     end, { desc = "Format file or range (in visual mode)"})
   end,

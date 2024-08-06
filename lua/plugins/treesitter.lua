@@ -23,9 +23,11 @@ return {
       "nix",
       "org",
       "php",
+      "php_only",
       "phpdoc",
       "query",
       "rust",
+      "bash",
       "sql",
       "svelte",
       "typescript",
@@ -69,7 +71,7 @@ return {
     parser_config.blade = {
       install_info = {
         url = "https://github.com/EmranMR/tree-sitter-blade",
-        files = {"src/parser.c"},
+        files = { "src/parser.c" },
         branch = "main",
       },
       filetype = "blade"
