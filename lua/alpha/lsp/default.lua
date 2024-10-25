@@ -14,7 +14,7 @@ return {
     rust_analyzer = { enable = true },
     svelte = { enable = true },
     tailwindcss = { enable = true, filetypes = {"blade", "html", "svelte"} },
-    tsserver = { enable = true },
+    ts_ls = { enable = true },
     volar = { enable = true },
   },
   default_options = function (options)
