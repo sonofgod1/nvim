@@ -12,21 +12,16 @@ return {
     { "L3MON4D3/LuaSnip", version = "v1.*" },
     "windwp/nvim-autopairs",
     {
-      "zbirenbaum/copilot-cmp",
-      dependencies = {
-        "zbirenbaum/copilot.lua",
-        cmd = { "Copilot" },
-        event = { "VeryLazy" },
-        opts = {
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        },
-      },
-      config = true,
+     'Exafunction/codeium.vim',
     },
   },
   event = "VeryLazy",
   config = function()
     require "alpha.completition"
+    -- Change '<C-g>' here to any keycode you like.
+    vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+    vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+    vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+    vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
   end,
 }

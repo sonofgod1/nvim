@@ -10,12 +10,8 @@ return function(client, bufnr)
   vim.keymap.set("n", "<leader>vf", function()
     return vim.lsp.buf.format {
       async = true,
-      filter = function(cli)
-        return cli.name ~= "lua_ls"
-      end,
     }
-  end, { buffer = 0, desc = "LSP format file" })
-
+  end, {})
   telescope_mapper("gr", "lsp_references", { buffer = true, desc = "LSP References of symbol on cursor" })
   telescope_mapper("<leader>pv", "find_symbol", { buffer = true, desc = "LSP find symbol on the project" })
   telescope_mapper("<leader>pd", "lsp_document_symbols", { buffer = true, desc = "LSP document symbols" })

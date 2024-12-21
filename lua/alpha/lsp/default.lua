@@ -10,16 +10,16 @@ return {
     jsonls = { enable = true },
     lua_ls = { enable = true, neodev = true },
     nil_ls = { enable = true },
-    phpactor = {enable = true },
+    phpactor = { enable = true },
     rust_analyzer = { enable = true },
     svelte = { enable = true },
-    tailwindcss = { enable = true, filetypes = {"blade", "html", "svelte"} },
+    tailwindcss = { enable = true, filetypes = { "blade", "html", "svelte" } },
     ts_ls = { enable = true },
     volar = { enable = true },
   },
-  default_options = function (options)
+  default_options = function(options)
     return vim.tbl_deep_extend("force", {
-      on_attach = require"alpha.lsp.attach",
+      on_attach = require "alpha.lsp.attach",
       flags = require "alpha.lsp.flags",
     }, options)
   end,

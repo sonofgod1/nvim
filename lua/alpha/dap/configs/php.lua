@@ -9,7 +9,7 @@ dap.configurations.php = {
   {
     type = "php",
     request = "launch",
-    name = "Laravel",
+    name = "Liste for Xdebug",
     port = 9003,
     serverSourceRoot = '/home/vagrant/code/php/pastores',
     localSourceRoot = '/home/jona/code/php/pastores',

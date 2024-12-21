@@ -12,7 +12,7 @@ for server, _ in pairs(servers) do
 end
 
 mason_lspconfig.setup {
-  -- ensure_installed = mason_servers,
+  ensure_installed = mason_servers,
 }
 
 -- filter the list for the ones not globally installed

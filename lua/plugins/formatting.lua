@@ -11,6 +11,7 @@ return{
           css = { "prettier" },
           html = { "prettier" },
           json = { "prettier" },
+          php = { "prettier" },
       },
       format_on_save = {
         lsp_fallback = true,

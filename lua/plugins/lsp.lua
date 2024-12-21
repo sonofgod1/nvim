@@ -11,18 +11,16 @@ return {
       },
     },
     "folke/neodev.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    {
+      "williamboman/mason-lspconfig.nvim",
+      config = function()
+        require("mason-lspconfig").setup({
+          ensure_installed = { "lua_ls" }
+        })
+      end
+    },
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   event = "VeryLazy",
   main = "alpha.lsp",
-  opts = {
-    mason = {
-      enable = true,
-      auto_install = false,
-    },
-    servers = {
-      phpactor = { enable = true },
-    },
-  },
 }
