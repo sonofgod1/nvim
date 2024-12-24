@@ -56,6 +56,7 @@ cmp.setup {
         end,
       },
     },
+    { name = "codeium"}
   },
 
   snippet = {
@@ -66,15 +67,19 @@ cmp.setup {
 
   formatting = {
     format = lspkind.cmp_format {
-      with_text = true,
+      -- with_text = true,
+      mode = "symbol",
+      maxwidth = 50,
+      ellipsis_char = "...",
+      symbol_map = { Codeium  = " ", },
       menu = {
         buffer = "[buf]",
-        nvim_lsp = "[ ]",
+        nvim_lsp = "[LSP]",
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",
         ["vim-dadbod-completion"] = "[DB]",
-      },
+      }
     },
   },
 

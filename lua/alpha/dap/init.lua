@@ -25,7 +25,7 @@ dapui.setup {
         "stacks",
         "watches",
       },
-      size = 80,
+      size = 40,
       position = "left",
     },
     {
