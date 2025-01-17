@@ -3,7 +3,7 @@ local dap = require("dap")
 dap.adapters.php = {
   type = "executable",
   command = "php-debug-adapter",
-  console = "internalConsole",
+  console = "integratedTerminal",
 }
 
 dap.configurations.php = {

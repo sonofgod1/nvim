@@ -35,6 +35,7 @@ map("n", "<leader>cc", ":cclose<CR>", { desc = "Close the quick fix list" })
 -- tabulation
 map("v", "<", "<gv", { desc = "Indent out and keeps the selection" })
 map("v", ">", ">gv", { desc = "Indent in and keeps the selection" })
+map("n", '<leader>ot', ':Telescope telescope-tabs list_tabs<CR>', { desc = "List and switch tabs" })
 
 -- symbols to add undo points
 local symbols = { ",", ".", "!", "?", "$", ">", "<" }
