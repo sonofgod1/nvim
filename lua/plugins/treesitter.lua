@@ -21,7 +21,6 @@ return {
       "markdown",
       "markdown_inline",
       "nix",
-      "org",
       "php",
       "php_only",
       "phpdoc",
@@ -37,7 +36,6 @@ return {
     },
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = { "org" },
     },
     indent = {
       enable = true,

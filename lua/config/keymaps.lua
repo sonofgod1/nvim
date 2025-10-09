@@ -8,7 +8,7 @@ end, { desc = "Special paste, paste without replacing copy register content" })
 
 map("n", "<leader>mm", function()
   local items =
-    vim.fn.systemlist "make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\\/\t=]*:([^=]|$)/ {split($1,A,/ /);print A[1]}'"
+      vim.fn.systemlist "make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\\/\t=]*:([^=]|$)/ {split($1,A,/ /);print A[1]}'"
 
   vim.ui.select(items, { promt = "Make command" }, function(choice)
     if not choice then
@@ -67,6 +67,8 @@ map(
   require("alpha.utils").save_and_exec,
   { desc = "Save the current file and source it for .vim and .lua files" }
 )
+
+map("n", "<leader>rt", ":Telescope resume<CR>", { desc = "Telescope resume" })
 
 map("n", "<leader>vn", vim.diagnostic.goto_next, { desc = "Goes to next diagnostic error" })
 map("n", "<leader>vp", vim.diagnostic.goto_prev, { desc = "Goes to prev diagnostic error" })

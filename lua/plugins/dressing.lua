@@ -63,7 +63,8 @@ return {
     },
     select = {
       -- Set to false to disable the vim.ui.select implementation
-      enabled = false,
+      enabled = true,
+      border = 'rounded',
 
       -- Priority list of preferred vim.select implementations
       backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
