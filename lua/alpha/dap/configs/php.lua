@@ -34,4 +34,22 @@ dap.configurations.php = {
       ["/app"] = "${workspaceFolder}",
     },
   },
+  {
+    type = "php",
+    request = "launch",
+    name = " liste for pastores",
+    port = 9003,
+    pathMappings = {
+      ["/var/www"] = "${workspaceFolder}",
+    },
+  },
+  {
+    type = "php",
+    request = "launch",
+    name = " listen for flexibles",
+    port = 9003,
+    pathMappings = {
+      ["/var/www"] = "${workspaceFolder}",
+    },
+  },
 }

@@ -1,5 +1,6 @@
 return {
-  "norcalli/nvim-colorizer.lua",
-  event = "VeryLazy",
-  config = true,
+  "catgoose/nvim-colorizer.lua",
+  event = "BufReadPre",
+  opts = {   -- set to setup table
+  },
 }

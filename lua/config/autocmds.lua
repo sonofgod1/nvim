@@ -37,3 +37,28 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.cmd [[%s/\s\+$//e]]
   end,
 })
+-- Reemplazar la búsqueda por defecto
+vim.keymap.set('n', '/', function()
+  vim.ui.input({
+    prompt = 'Buscar: ',
+  }, function(input)
+    if input then
+      local escaped = vim.fn.escape(input, '\\/.*$^~[]')
+      vim.cmd('let @/ = ' .. vim.fn.string(escaped)) -- Establecer el último patrón de búsqueda
+      vim.cmd('normal! n')                           -- Saltar a la siguiente coincidencia
+    end
+  end)
+end, { desc = 'Búsqueda con escape automático' })
+
+-- Lo mismo para búsqueda hacia atrás (?)
+vim.keymap.set('n', '?', function()
+  vim.ui.input({
+    prompt = 'Buscar hacia atrás: ',
+  }, function(input)
+    if input then
+      local escaped = vim.fn.escape(input, '\\/.*$^~[]')
+      vim.cmd('let @/ = ' .. vim.fn.string(escaped)) -- Establecer el patrón
+      vim.cmd('normal! N')                           -- Saltar a la coincidencia anterior
+    end
+  end)
+end, { desc = 'Búsqueda hacia atrás con escape automático' })

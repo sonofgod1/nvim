@@ -11,7 +11,7 @@ return {
         css = { "prettier" },
         html = { "prettier" },
         json = { "prettier" },
-        php = { "prettier" },
+        php = { "php_cs_fixer" },
         python = { "black" },
         rust = { "rustfmt" },
         typescript = { "biome" },

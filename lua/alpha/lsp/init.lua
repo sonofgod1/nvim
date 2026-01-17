@@ -5,6 +5,8 @@ return {
     local lspconfig = require "lspconfig"
 
     local mason_servers = {}
+    local external_servers = {} -- Para servidores externos como odoo_ls
+
     for server, options in pairs(ops.servers) do
       if options.enable == true then
         local ok, definition = pcall(require, "alpha.lsp.servers." .. server)
@@ -14,12 +16,25 @@ return {
         else
           server_options = definition(options)
         end
-        lspconfig[server].setup(server_options)
-        table.insert(mason_servers, server)
+
+        -- Verificar si es un servidor externo (tiene cmd definido y es ejecutable)
+        if server_options.cmd and vim.fn.executable(server_options.cmd[1]) == 1 then
+          table.insert(external_servers, server)
+          lspconfig[server].setup(server_options)
+        else
+          table.insert(mason_servers, server)
+          lspconfig[server].setup(server_options)
+        end
+        -- DEBUG: Verificar que el servidor se configuró
+        if server == "odoo_ls" then
+          print("🟢 odoo_ls configurado via sistema modular")
+          print("   cmd:", vim.inspect(server_options.cmd))
+          print("   root_dir:", server_options.root_dir)
+        end
       end
     end
 
-    -- Mason
+    -- Mason solo para servidores que puede instalar
     if ops.mason.enable then
       local mason_ops = {}
       if ops.mason.auto_install == true then
@@ -61,5 +76,12 @@ return {
         vim.api.nvim_win_set_buf(0, buffer)
       end)
     end, {})
+
+    -- Log de servidores configurados
+    vim.notify(string.format(
+      "LSP: %d Mason servers, %d external servers",
+      #mason_servers,
+      #external_servers
+    ), vim.log.levels.INFO)
   end,
 }

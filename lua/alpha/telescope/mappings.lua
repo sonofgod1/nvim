@@ -50,7 +50,14 @@ map_tele("<leader>rp", "find_nvim_plugin", { desc = "Search Neovim plugins" })
 map_tele("<leader>rs", "scratchs", { desc = "Search Neovim Scratchs files" })
 map_tele("<leader>ph", "help_tags", { desc = "Neovim Help" })
 map_tele("<leader>pe", "buffers", { desc = "Open buffers" })
-map_tele("<leader>pr", "treesitter", { desc = "Treesitter buffer elements" })
+
+vim.keymap.set('n', '<leader>pr', function()
+  require('telescope.builtin').treesitter({
+    bufnr = vim.api.nvim_get_current_buf()
+  })
+end, { desc = 'Treesitter buffer elements' })
+--map_tele("<leader>pr", "treesitter", { desc = "Treesitter buffer elements" })
+
 map_tele("<leader>bb", "file_browser_relative", { desc = "Current directory" })
 map_tele("<leader>bp", "file_browser", { desc = "Project directory" })
 map_tele("<leader>gs", "git_status", { desc = "Git status" })
