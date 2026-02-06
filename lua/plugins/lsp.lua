@@ -13,6 +13,7 @@ return {
     "folke/neodev.nvim",
     {
       "williamboman/mason-lspconfig.nvim",
+      version = "~1.0",
       config = function()
         require("mason-lspconfig").setup({
           ensure_installed = { "lua_ls" }

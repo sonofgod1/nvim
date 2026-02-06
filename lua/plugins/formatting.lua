@@ -16,6 +16,7 @@ return {
         rust = { "rustfmt" },
         typescript = { "biome" },
         typescriptreact = { "prettier" },
+        lua = { "stylua" },
         yaml = { "prettier" },
       },
       format_on_save = {

@@ -1,13 +1,16 @@
 return {
-"Exafunction/codeium.nvim",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("codeium").setup({
+  "Exafunction/windsurf.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+  },
+  config = function()
+    require("codeium").setup {
+      -- Optionally disable cmp source if using virtual text only
+      enable_cmp_source = false,
       virtual_text = {
         enabled = true,
+
         -- These are the defaults
 
         -- Set to true if you never want completions to be shown automatically.
@@ -29,25 +32,20 @@ return {
         accept_fallback = nil,
         -- Key bindings for managing completions in virtual text mode.
         key_bindings = {
-            -- Accept the current completion.
-            accept = "<Tab>",
-            -- Accept the next word.
-            accept_word = false,
-            -- Accept the next line.
-            accept_line = false,
-            -- Clear the virtual text.
-            clear = false,
-            -- Cycle to the next completion.
-            next = "<M-]>",
-            -- Cycle to the previous completion.
-            prev = "<M-[>",
-        }
-      }
-    })
-        -- vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-        -- vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-        -- vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-        -- vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-
-  end
+          -- Accept the current completion.
+          accept = "<Tab>",
+          -- Accept the next word.
+          accept_word = false,
+          -- Accept the next line.
+          accept_line = false,
+          -- Clear the virtual text.
+          clear = false,
+          -- Cycle to the next completion.
+          next = "<M-]>",
+          -- Cycle to the previous completion.
+          prev = "<M-[>",
+        },
+      },
+    }
+  end,
 }

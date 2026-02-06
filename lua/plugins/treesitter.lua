@@ -1,86 +1,22 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
-  event = "VeryLazy",
-  main = "nvim-treesitter.configs",
-  opts = {
-    ensure_installed = {
-      "bash",
-      "blade",
-      "css",
-      "go",
-      "gomod",
-      "html",
-      "javascript",
-      "json",
-      "lua",
-      "luadoc",
-      "markdown",
-      "markdown_inline",
-      "nix",
-      "php",
-      "php_only",
-      "phpdoc",
-      "query",
-      "rust",
-      "bash",
-      "sql",
-      "svelte",
-      "typescript",
-      "regex",
-      "vim",
-      "yaml",
-    },
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
-    textobjects = {
-      select = {
+  config = function()
+    -- Intenta cargar nvim-treesitter.configs solo si ya está instalado
+    local ok, configs = pcall(require, "nvim-treesitter.configs")
+    if not ok then
+      -- En el primer arranque, el plugin aún no existe → silenciar error
+      return
+    end
+
+    configs.setup({
+      ensure_installed = { "blade", "php", "html", "css" },
+      highlight = {
         enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@conditional.outer",
-          ["ic"] = "@conditional.inner",
-          ["al"] = "@loop.outer",
-          ["il"] = "@loop.inner",
-        },
+        additional_vim_regex_highlighting = false,
       },
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
-      },
-    },
-  },
-  config = function(plug, config)
-    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-    parser_config.blade = {
-      install_info = {
-        url = "https://github.com/EmranMR/tree-sitter-blade",
-        files = { "src/parser.c" },
-        branch = "main",
-      },
-      filetype = "blade"
-    }
-
-    vim.filetype.add({
-      pattern = {
-        ['.*%.blade%.php'] = 'blade',
-      }
+      indent = { enable = true },
     })
-
-    require(plug.main).setup(config);
   end,
+  event = { "BufReadPost", "BufNewFile" },
 }
